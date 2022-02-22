@@ -1,0 +1,23 @@
+body {
+    display: flex;
+}
+
+.flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 960px;
+    width: 960px;
+    border-style: solid;
+    gap: 0;
+}
+
+label {
+    font-size: 36px;
+}
+
+input[type=radio] {
+    height: 3em;
+    width: 3em;
+}
