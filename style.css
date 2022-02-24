@@ -11,13 +11,18 @@ body {
     width: 960px;
     border-style: solid;
     gap: 0;
+    border-radius: 0.5rem;
 }
 
 label {
     font-size: 36px;
 }
 
-input[type=radio] {
+input[type=radio], input[type=number] {
     height: 3em;
     width: 3em;
+}
+
+.hovered {
+    background-color: black;
 }
