@@ -1,14 +1,21 @@
 const container = document.querySelector('.flex-grid');
 const createdDivs = document.getElementsByClassName('newDiv');
+const clearBoardButton = document.getElementById('clearBoard')
+const slider = document.getElementById('sliderBar');
+clearBoardButton.addEventListener('click', cleanCreate)
 
+
+let sizeChoice = document.getElementById('sliderBar').value
+let update = () => sizeChoice = slider.value;
+slider.addEventListener('input', () => {
+    update()
+    cleanCreate()
+})
 
 function createDivs() {
-    const sizeChoice = document.querySelector('input[name="size"]:checked').value
-    if (sizeChoice === '16' || sizeChoice === '32' || sizeChoice === '64') {
-        for (let i = 1; i <= sizeChoice * sizeChoice; i++) {
-            container.appendChild(createDiv())
-        }
-    } else alert('Wrong number');
+    for (let i = 1; i <= sizeChoice * sizeChoice; i++) {
+        container.appendChild(createDiv())
+    }
 }
 
 function removeDivs() {
@@ -18,7 +25,6 @@ function removeDivs() {
 }
 
 function createDiv() {
-    const sizeChoice = document.querySelector('input[name="size"]:checked').value
     const div = document.createElement('div');
     div.classList.add('newDiv');
     div.style.width = `${960 / sizeChoice}px`;
@@ -37,24 +43,44 @@ function cleanCreate() {
     afterChange();
 }
 
-const radio16 = document.getElementById('16')
-radio16.addEventListener('click', cleanCreate)
 
-const radio32 = document.getElementById('32')
-radio32.addEventListener('click', cleanCreate)
+function changeColor(element) {
+    if (rainbowCheck.checked) {
+        element.style.backgroundColor = `#${randomizeColor()}`;
+    } else element.style.backgroundColor = "black";
 
-const radio64 = document.getElementById('64')
-radio64.addEventListener('click', cleanCreate)
-
-
-function changeColor(event) {
-    event.target.style.backgroundColor = 'black';
 }
 
 function afterChange() {
     const newDivs = document.querySelectorAll('.newDiv');
-    newDivs.forEach(newDiv => newDiv.addEventListener('mouseenter', changeColor))
+    newDivs.forEach(newDiv => newDiv.addEventListener('mouseenter', (event) => {
+        if (isMousedown) {
+            changeColor(event.target)
+        } else {
+        }
+    }))
 }
 
 createDivs()
 afterChange()
+
+let isMousedown = false;
+
+window.addEventListener("mousedown", function () {
+    isMousedown = true;
+});
+
+document.addEventListener("mouseup", function () {
+    isMousedown = false;
+});
+
+function randomizeColor() {
+    const randomColor = Math.floor(Math.random() * 16777215)
+    return randomColor.toString(16)
+}
+
+const rainbowCheck = document.getElementById('rainbowCheck')
+
+
+
+
