@@ -26,6 +26,7 @@ function removeDivs() {
 
 function styleGrid() {
     container.style['grid-template-columns'] = `repeat(${sizeChoice}, ${Math.floor((960 / sizeChoice) * 100) / 100}px)`
+    container.style['grid-template-rows'] = `repeat(${sizeChoice}, ${Math.floor((960 / sizeChoice) * 100) / 100}px)`
 }
 
 function createDiv() {
