@@ -1,4 +1,4 @@
-const container = document.querySelector('.flex-grid');
+const container = document.querySelector('#flex-grid');
 const createdDivs = document.getElementsByClassName('newDiv');
 const clearBoardButton = document.getElementById('clearBoard')
 const slider = document.getElementById('sliderBar');
@@ -24,6 +24,10 @@ function removeDivs() {
     }
 }
 
+function styleGrid() {
+    container.style['grid-template-columns'] = `repeat(${sizeChoice}, ${Math.floor((960 / sizeChoice) * 100) / 100}px)`
+}
+
 function createDiv() {
     const div = document.createElement('div');
     div.classList.add('newDiv');
@@ -39,6 +43,7 @@ function createDiv() {
 
 function cleanCreate() {
     removeDivs();
+    styleGrid()
     createDivs();
     afterChange();
 }
