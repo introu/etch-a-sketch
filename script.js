@@ -27,8 +27,8 @@ function removeDivs() {
 function createDiv() {
     const div = document.createElement('div');
     div.classList.add('newDiv');
-    div.style.width = `${960 /  sizeChoice}px`;
-    div.style.height = `${960 / sizeChoice}px`;
+    div.style.width = `${Math.floor((960 / sizeChoice) * 100) / 100}px`;
+    div.style.height = `${Math.floor((960 / sizeChoice) * 100) / 100}px`;
     div.style.margin = '0';
     div.style.padding = '0';
     div.style.backgroundColor = 'white';
